@@ -1,21 +1,40 @@
-const Discord = require('discord.js');
-const auth = require('./auth.json');
-
+const Discord = require("discord.js");
+const auth = require("./auth.json");
+const winston = require('winston');
 const client = new Discord.Client();
-
 const token = auth.token;
-
-client.on('ready', () => {
-    console.log('I am ready!');
+const logger = winston.createLogger({
+    transports: [
+        new winston.transports.Console({ level: 'error' }),
+        new winston.transports.File({
+            filename: 'combined.log',
+            level: 'info'
+        }),
+        new winston.transports.File({
+            filename: 'error.log',
+            level: 'error'
+        })
+    ]
 });
 
-// Create an event listener for messages
-client.on('message', message => {
-    // If the message is "ping"
-    if (message.content === 'ping') {
-    // Send "pong" to the same channel
-    message.channel.send('pong');
-}
+client.on("ready", function(){
+    logger.log("info", "Bot started successfully!");
+});
+
+client.on("message", function (message) {
+    //Commands
+    if(message.content.substring(0,1) === "!"){
+        var msg = message.content.split(" ");
+        var cmd = msg[0].substring(1, msg[0].length);
+
+        if(cmd === "ping"){
+            message.channel.send("pong");
+        }
+    }
+    //Responder
+    else{
+
+    }
 });
 
 client.login(token);
