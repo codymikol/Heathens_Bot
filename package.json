@@ -1,0 +1,17 @@
+{
+  "name": "heathens_bot",
+  "version": "1.0.0",
+  "description": "Nitro's Updated Heathens Bot",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nitrothegreat",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^11.3.2",
+    "mongo": "^0.1.0",
+    "request": "^2.85.0",
+    "winston": "^3.0.0-rc2"
+  }
+}
