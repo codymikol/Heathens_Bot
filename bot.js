@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const auth = require("./auth.json");
 const winston = require('winston');
 const request = require("request");
+const fs = require('fs-extra');
 const client = new Discord.Client();
 const token = auth.token;
 const logger = winston.createLogger({
@@ -20,12 +21,20 @@ const logger = winston.createLogger({
 
 client.on("ready", function(){
     logger.info("Bot started successfully!");
+
+    if(fs.pathExistsSync('./responses.json')){
+        fs.writeJsonSync('./responses.json',
+            {
+                "hello" : "fuck off"
+            }
+        );
+    }
 });
 
 client.on("message", function (message){
+    let msg = message.content.split(" ");
     //Commands
     if(message.content.substring(0,1) === "!"){
-        let msg = message.content.split(" ");
         let cmd = msg[0].substring(1);
 
         switch(cmd){
@@ -56,7 +65,12 @@ client.on("message", function (message){
     }
     //Responder
     else{
-
+        // let responses = fs.readJsonSync('.\\responses.json');
+        // for(var index in msg){
+        //     if(responses.msg[index] !== null){
+        //         message.channel.send(responses.msg[index]);
+        //     }
+        // }
     }
 });
 
