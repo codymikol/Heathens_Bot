@@ -43,13 +43,13 @@ client.on("message", function (message){
                 break;
             case "roll":
                 let param = msg[1];
-                let re = new RegExp('[\\d]+d[\\d]+');
+                let re = new RegExp("[\\d]+d[\\d]+");
                 if(param != null && param.match(re)!= null){
                     let rollResult = rollDice(param);
-                    message.channel.send('You rolled: ' + rollResult[1] + " (" + rollResult[0].toString() + ")");
+                    message.channel.send("You rolled: " + rollResult[1] + " (" + rollResult[0].toString() + ")");
                 }
                 else{
-                    message.channel.send('Invalid dice param.');
+                    message.channel.send("Invalid dice param.");
                 }
                 break;
         }
@@ -79,7 +79,7 @@ function rollDice(param){
 }
 
 function getGiphyResults(param, item, message){
-    let url = 'http://api.giphy.com/v1/gifs/search?q=' + encodeURI(param) + '&api_key=' + auth.giphyToken;
+    let url = "http://api.giphy.com/v1/gifs/search?q=" + encodeURI(param) + "&api_key=" + auth.giphyToken;
     console.log(url);
 
     request(url, function (error, response, body){
