@@ -8,11 +8,10 @@
 
 - [ ] Music Bot
 - [ ] Polls
-- [ ] Dice Roller
-- [ ] GIF
+- [x] Dice Roller
+- [x] GIF
 - [ ] Timer/Stopwatch
 - [ ] Wiki Summary
 - [ ] Quiz
 - [ ] Random Facts
 - [ ] Raffle
-- [ ] Text to speech (not sure why we have a bot command for it but why not?)
